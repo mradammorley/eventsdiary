@@ -3,12 +3,12 @@ import Calendar from './Calendar';
 
 class App extends React.Component {
     state = {
-        calendarMessage: 'my other calendar message'
+    	calendarMessage: 'my other calendar message'
     };
     render () {
-        return (
-            <Calendar message={this.state.calendarMessage} />
-        )
+    	return (
+    		<Calendar message={this.state.calendarMessage} />
+    	);
     }
 }
 
