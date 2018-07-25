@@ -1,14 +1,26 @@
 import React from 'react';
+import Toolbar from './Toolbar';
 import Calendar from './Calendar';
+import Legend from './Legend';
+import BookingsHeader from './BookingsHeader';
+import Bookings from './Bookings';
+
+const today = new Date();
 
 class App extends React.Component {
     state = {
-    	calendarMessage: 'my other calendar message'
+    	displayDate: today
     };
     render () {
-    	return (
-    		<Calendar message={this.state.calendarMessage} />
-    	);
+	    return (
+	    	<div className='App'>
+			    <Toolbar/>
+			    <Calendar/>
+			    <Legend/>
+			    <BookingsHeader/>
+			    <Bookings/>
+		    </div>
+        )
     }
 }
 

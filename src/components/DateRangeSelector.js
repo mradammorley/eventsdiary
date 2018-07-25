@@ -1,27 +1,15 @@
 import React from 'react';
 import Utils from '../Utils';
 
-const _utils = new Utils;
+import DisplayDateRange from './DisplayDateRange';
 
-let dbCurrentdate = new Date();
+const _utils = new Utils;
 
 const DateRangeSelector = () => {
 	return (
-		<td className='dateSelection'>
-			<form method='get' action='calendar.asp'>
-				<table>
-					<tbody>
-						<tr>
-							<td className='dateSelectiontd'>
-								<h2>
-									{ _utils.getMonthName(dbCurrentdate) }, { _utils.getYearName(dbCurrentdate) }
-								</h2>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</td>
+		<div className='DateRangeSelector'>
+			<DisplayDateRange />
+		</div>
 	);
 };
 

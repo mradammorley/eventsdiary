@@ -1,16 +1,9 @@
 import React from 'react';
-import DateRangeSelector from './DateRangeSelector';
 
-const Calendar = ({ message }) => {
+const Calendar = () => {
     return (
         <div className='Calendar'>
-            <table>
-                <tbody>
-                    <tr>
-                        <DateRangeSelector/>
-                    </tr>
-                </tbody>
-            </table>
+           Calendar
         </div>
     );
 }
