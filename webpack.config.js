@@ -11,6 +11,10 @@ module.exports = {
 			{
 				test:/\.js$/,
 				use: 'babel-loader'
+			},
+			{
+				test:/\.json$/,
+				use: 'json-loader'
 			}
 		]
 	}
