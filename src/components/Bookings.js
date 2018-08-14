@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Bookings = () => {
+const Bookings = ({event}) => {
 	return (
 		<div className='Bookings'>
 			Bookings

@@ -1,8 +1,6 @@
-
 [
     {
-        "name":"booker",
-        "data":[
+        "booker": [
             {
                 "bookerID":9,
                 "bookerName":"Boiler Shop",
@@ -21,8 +19,7 @@
         ]
     },
     {
-        "name":"event",
-        "data":[
+        "event": [
             {
                 "eventID":12929,
                 "month":9,
@@ -3986,8 +3983,7 @@
         ]
     },
     {
-        "name":"userGroup",
-        "data":[
+        "userGroup": [
             {
                 "userGroupID":1,
                 "userGroupName":"Internal",
@@ -4019,8 +4015,7 @@
         ]
     },
     {
-        "name":"userLogin",
-        "data":[
+        "userLogin": [
             {
                 "userLoginID":1,
                 "userGroupID":2,
@@ -4102,8 +4097,7 @@
         ]
     },
     {
-        "name":"venue",
-        "data":[
+        "venue": [
             {
                 "venueID":2,
                 "venueName":"Boiler Shop ",

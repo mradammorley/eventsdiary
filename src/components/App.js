@@ -15,10 +15,10 @@ class App extends React.Component {
 	    return (
 	    	<div className='App'>
 			    <Toolbar/>
-			    <Calendar/>
-			    <Legend/>
+			    <Calendar {...this.props.data.event}/>
+			    <Legend {...this.props.data.venue}/>
 			    <BookingsHeader/>
-			    <Bookings/>
+			    <Bookings {...this.props.data.event}/>
 		    </div>
         )
     }

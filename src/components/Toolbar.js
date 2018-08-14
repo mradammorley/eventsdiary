@@ -12,7 +12,7 @@ const Toolbar = () => {
 			<DateRangeBrowser />
 			<AccountTools />
 		</div>
-	)
+	);
 };
 
 export default Toolbar;

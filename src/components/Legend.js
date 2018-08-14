@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Legend = () => {
+const Legend = ({venue}) => {
 	return (
 		<div className='Legend'>
 			<ul>
