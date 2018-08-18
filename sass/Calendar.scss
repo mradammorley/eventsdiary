@@ -1,3 +1,10 @@
 .Calendar {
   grid-area: Calendar;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 37px auto;
+  grid-template-areas:
+          "CalendarDaysHeader"
+          "CalendarCells";
+  height: 100%;
 }

@@ -8,9 +8,14 @@ import Bookings from './Bookings';
 const today = new Date();
 
 class App extends React.Component {
-    state = {
-    	displayDate: today
-    };
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			displayDate: today
+		};
+	}
+
     render () {
 	    return (
 	    	<div className='App'>
