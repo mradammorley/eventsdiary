@@ -1,0 +1,804 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400");
+.toolbar-gradient {
+  background: #eeeeee;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
+  background: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); }
+
+body {
+  font-size: calc(6px + 0.6vw);
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; }
+
+.page-header, .DisplayDateRange {
+  font-size: calc(12px + 1.2vw); }
+  .page-header span.light-text, .DisplayDateRange span.light-text {
+    white-space: pre;
+    font-weight: 300; }
+
+.base-shadow {
+  box-shadow: 0 4px 4px 0 rgba(58, 70, 92, 0.1), 0 2px 2px 0 rgba(58, 70, 92, 0.1); }
+
+.App {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 37px 192px 30px 36px auto;
+  grid-template-areas: "Toolbar" "Calendar" "Legend" "BookingsHeader" "Bookings";
+  height: 100vh; }
+
+.Toolbar {
+  grid-area: Toolbar;
+  display: grid;
+  grid-template-columns: [DisplayDateRange-start] 30% [DisplayDateRange-end DateRangeSelector-start] 30% [DateRangeSelector-end DateRangeBrowser-start] 25% [DateRangeBrowser-end AccountTools-start] 1fr [AccountTools-end];
+  grid-template-rows: 100%;
+  background: white; }
+  .Toolbar > div {
+    align-self: center;
+    justify-self: start;
+    margin-left: 5px; }
+
+.Calendar {
+  grid-area: Calendar;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 37px auto;
+  grid-template-areas: "CalendarDaysHeader" "CalendarGrid";
+  height: 100%;
+  grid-gap: 1px;
+  background-color: gray; }
+
+.CalendarDaysHeader {
+  grid-area: CalendarDaysHeader;
+  display: grid;
+  grid-template-columns: repeat(7, 14.29%);
+  height: 100%;
+  width: 100%;
+  background-color: white; }
+  .CalendarDaysHeader > div {
+    align-self: center;
+    justify-self: end;
+    margin-right: calc(1vw - 1px); }
+
+.CalendarGrid {
+  grid-area: CalendarGrid;
+  display: grid;
+  grid-template-columns: repeat(7, 14.25vw);
+  height: 100%;
+  width: 100%;
+  grid-gap: 1px;
+  background-color: #d9d9d9; }
+
+.CalendarCell {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 1vw;
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-sizing: border-box; }
+  .CalendarCell.inactive {
+    color: #bfbfbf; }
+
+.Legend {
+  grid-area: Legend; }
+
+.BookingsHeader {
+  grid-area: BookingsHeader; }
+
+.Bookings {
+  grid-area: Bookings; }
+
+.DisplayDateRange {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1vw;
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-sizing: border-box; }
+  .DisplayDateRange.inactive {
+    color: #bfbfbf; }
+
+.box {
+  height: 13px;
+  width: 13px;
+  font-family: arial, helvetica, sans serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFFFF; }
+
+.boxBooked {
+  background-color: #FF0033; }
+
+.boxProvisional {
+  background-color: #3333ff; }
+
+.boxProbable {
+  background-color: #FF9900; }
+
+.boxEarly {
+  background-color: #66cc00; }
+
+.boxNothing {
+  background-color: #A9A7BD; }
+
+.provisional {
+  background-color: #3333ff;
+  background-image: none; }
+
+.probable {
+  background-color: #FF9900;
+  background-image: none; }
+
+.booked {
+  background-color: #FF0033;
+  background-image: none; }
+
+.early {
+  background-color: #66cc00;
+  background-image: none; }
+
+.wvBooked {
+  background-color: #99CCCC; }
+
+.wvProvisional {
+  background-color: #00CCCC; }
+
+/*A {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*text-decoration: underline;*/
+/*}*/
+/*A:HOVER {*/
+/*color: #333333;*/
+/*}*/
+/*A:ACTIVE {*/
+/*color: #000000;*/
+/*}*/
+/*A.menu {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 13px;*/
+/*font-weight: bold;*/
+/*text-decoration: none;*/
+/*padding:5px;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-color:#D8D9E3;*/
+/*vertical-align:middle;*/
+/*}*/
+/*A.menu:HOVER {*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*}*/
+/*A.menu:ACTIVE {*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#999999;*/
+/*border-left-color:#999999;*/
+/*border-right-color:#FFFFFF;*/
+/*border-bottom-color:#FFFFFF;*/
+/*}*/
+/*A.nav {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*text-decoration: none;*/
+/*padding:1px;*/
+/*border-style:none;*/
+/*border-width:1px;*/
+/*border-color:none;*/
+/*}*/
+/*A.nav:HOVER {*/
+/*margin: 0px;*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*}*/
+/*A.nav:ACTIVE {*/
+/*margin: 0px;*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#999999;*/
+/*border-left-color:#999999;*/
+/*border-right-color:#FFFFFF;*/
+/*border-bottom-color:#FFFFFF;*/
+/*}*/
+/*A.action {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*text-decoration: none;*/
+/*margin:1px;*/
+/*border-style:none;*/
+/*border-width:1px;*/
+/*border-color:none;*/
+/*}*/
+/*A.action:HOVER {*/
+/*margin: 0px;*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*}*/
+/*A.action:ACTIVE {*/
+/*margin: 0px;*/
+/*color: #000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#999999;*/
+/*border-left-color:#999999;*/
+/*border-right-color:#FFFFFF;*/
+/*border-bottom-color:#FFFFFF;*/
+/*}*/
+/*BODY {*/
+/*scrollbar-face-color: #CCCCCC;*/
+/*scrollbar-shadow-color: #999999;*/
+/*scrollbar-highlight-color: #FFFFFF;*/
+/*scrollbar-3d-light-color :#FFFFFF;*/
+/*scrollbar-dark-shadow-color: #999999;*/
+/*scrollbar-track-color: #DDDDDD;*/
+/*scrollbar-arrow-color: #666666;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 0px;*/
+/*margin-left: 0px;*/
+/*padding-top: 0px;*/
+/*padding-right: 0px;*/
+/*padding-bottom: 0px;*/
+/*padding-left: 0px;*/
+/*border-top-width: 0px;*/
+/*border-right-width: 0px;*/
+/*border-bottom-width: 0px;*/
+/*border-left-width: 0px;*/
+/*}*/
+/*.button100	{*/
+/*width : 100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*color: #000000;*/
+/*font-size : 11px;*/
+/*background-color:#CCCCCC;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*margin-bottom: 0px;*/
+/*margin-right: 5px;*/
+/*}*/
+/*.button200	{*/
+/*width : 200px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*color: #000000;*/
+/*font-size : 11px;*/
+/*background-color:#CCCCCC;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*margin-bottom: 0px;*/
+/*margin-right: 5px;*/
+/*}*/
+/*.buttonNextBack100	{*/
+/*width : 100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*color: #FFFFFF;*/
+/*font-size : 11px;*/
+/*font-weight: bold;*/
+/*background-color:#000000;*/
+/*border-color : #666666;*/
+/*margin-bottom: 0px;*/
+/*}*/
+/*.checkbox	{*/
+/*background-color: #FFFFFF;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 0px;*/
+/*margin-left: 0px;*/
+/*}*/
+/*.colNameInput	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#CCCCCC;*/
+/*margin-bottom: 1px;*/
+/*margin-top: 0px;*/
+/*margin-left: 1px;*/
+/*margin-right: 1px;*/
+/*color:#000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-color:#FFFFFF;*/
+/*}*/
+/*.dateSelection {*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:100%;*/
+/*height:25px;*/
+/*padding:5px;*/
+/*}*/
+/*.dateSelectionTD {*/
+/*border-right-style:solid;*/
+/*border-right-color:#FFFFFF;*/
+/*border-right-width:1px;*/
+/*}*/
+/*.dowLabelTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*}*/
+/*.bookerTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:120px;*/
+/*}*/
+/*.eventNameTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:40%;*/
+/*}*/
+/*.detailsTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:60%;*/
+/*}*/
+/*.dateEnteredTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:100px;*/
+/*}*/
+/*.confirmationTD	{*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:150px;*/
+/*}*/
+/*.bookedDayTD	{*/
+/*border-style:solid;*/
+/*border-width:2px;*/
+/*border-top-color:#68667E;*/
+/*border-left-color:#A9A7BD;*/
+/*border-bottom-color:#E3E4EC;*/
+/*border-right-color:#C9CAD8;*/
+/*background-image:url('../adminImage/background_panel_300_dark.gif');*/
+/*background-repeat: repeat-x;*/
+/*}*/
+/*.dayTD	{*/
+/*border-style:solid;*/
+/*border-width:2px;*/
+/*border-top-color:#68667E;*/
+/*border-left-color:#A9A7BD;*/
+/*border-bottom-color:#E3E4EC;*/
+/*border-right-color:#C9CAD8;*/
+/*background-image:url('../adminImage/background_panel_300.gif');*/
+/*background-repeat: repeat-x;*/
+/*width:14%;*/
+/*}*/
+/*.entryBody {*/
+/*background-color:#FFFFFF;*/
+/*background-image: url('../adminImage/KOKO-Logo.png');*/
+/*background-repeat: no-repeat;*/
+/*background-position: center 75;*/
+/*}*/
+/*.entryP {*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*color:#333333;*/
+/*}*/
+/*.formBody {*/
+/*background-color:#FFFFFF;*/
+/*}*/
+/*.formMenuP {*/
+/*margin-top:3px;*/
+/*margin-bottom:3px;*/
+/*}*/
+/*H1 {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: bold;*/
+/*margin-top: 5px;*/
+/*margin-right: 10px;*/
+/*margin-bottom: 5px;*/
+/*margin-left: 10px;*/
+/*}*/
+/*H2 {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 14px;*/
+/*font-weight: bold;*/
+/*margin-top: 5px;*/
+/*margin-right: 10px;*/
+/*margin-bottom: 5px;*/
+/*margin-left: 10px;*/
+/*}*/
+/*HR {*/
+/*color: #DDDDDD;*/
+/*width:100%;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 0px;*/
+/*margin-left: 0px;*/
+/*height:1px;*/
+/*}*/
+/*.imageMenuP {*/
+/*color:#000000;*/
+/*margin-left:6px;*/
+/*margin-top:10px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.input50	{*/
+/*width : 50px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*border-style:solid;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.inputDisplayDetails	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#D8D9E3;*/
+/*margin: 0px;*/
+/*border-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*textarea.inputDisplayDetails	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#D8D9E3;*/
+/*margin: 0px;*/
+/*border-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*height:50px;*/
+/*}*/
+/*textarea.inputDisplayDetailsNew	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin: 0px;*/
+/*border-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*height:50px;*/
+/*}*/
+/*.inputDisplayDetailsNew	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin: 0px;*/
+/*border-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.inputDisplayDetailsP	{*/
+/*margin-left: 8px;*/
+/*margin-top:3px;*/
+/*}*/
+/*.input200	{*/
+/*width : 200px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*border-style:solid;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.input400	{*/
+/*width : 400px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*border-style:solid;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.instructions510	{*/
+/*color: #FFFFFF;*/
+/*width:510px;*/
+/*font-size:11px;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 5px;*/
+/*margin-left: 10px;*/
+/*}*/
+/*.invoiceTD	{*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*padding:5px;*/
+/*}*/
+/*.invoiceHeaderTD	{*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*padding:5px;*/
+/*border-left-style:solid;*/
+/*border-top-style:solid;*/
+/*border-bottom-style:none;*/
+/*border-right-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.invoiceLineAboveTD	{*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*padding:5px;*/
+/*border-left-style:none;*/
+/*border-top-style:solid;*/
+/*border-bottom-style:none;*/
+/*border-right-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.hidden {*/
+/*color:#777777;*/
+/*}*/
+/*.listBody {*/
+/*background-image:url('../adminImage/background_panel_300.gif');*/
+/*background-repeat: repeat-x;*/
+/*background-color:#FFFFFF;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#68667E;*/
+/*border-left-color:#68667E;*/
+/*border-right-color:#68667E;*/
+/*border-bottom-style:none;*/
+/*color:#666666;*/
+/*}*/
+/*.menuBody {*/
+/*background-image:url('../adminImage/background_menu_60.gif');*/
+/*background-repeat: repeat-x;*/
+/*}*/
+/*.menuP {*/
+/*}*/
+/*.newAreaMenuP {*/
+/*color:#000000;*/
+/*margin-left:24px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.newArticleMenuP {*/
+/*color:#000000;*/
+/*margin-left:42px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.newEventTD	{*/
+/*border-style:solid;*/
+/*border-width:2px;*/
+/*border-top-color:#68667E;*/
+/*border-left-color:#A9A7BD;*/
+/*border-bottom-color:#E3E4EC;*/
+/*border-right-color:#C9CAD8;*/
+/*background-image:none;*/
+/*}*/
+/*.newPageMenuP {*/
+/*color:#000000;*/
+/*margin-left:24px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.notes200	{*/
+/*color: #FFFFFF;*/
+/*width:200px;*/
+/*font-size:10px;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 0px;*/
+/*margin-left: 10px;*/
+/*}*/
+/*.notes510	{*/
+/*color: #FFFFFF;*/
+/*width:510px;*/
+/*font-size:10px;*/
+/*margin-top: 0px;*/
+/*margin-right: 0px;*/
+/*margin-bottom: 0px;*/
+/*margin-left: 10px;*/
+/*}*/
+/*P {*/
+/*font-family: arial, helvetica;*/
+/*color: #000000;*/
+/*font-style: normal;*/
+/*font-size: 11px;*/
+/*font-weight: normal;*/
+/*margin-top: 5px;*/
+/*margin-right: 10px;*/
+/*margin-bottom: 5px;*/
+/*margin-left: 10px;*/
+/*text-align: left;*/
+/*}*/
+/*.pageMenuBody {*/
+/*background-color:#CCCCCC;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-top-color:#FFFFFF;*/
+/*border-left-color:#FFFFFF;*/
+/*border-right-color:#999999;*/
+/*border-bottom-color:#999999;*/
+/*}*/
+/*.reportSelect	{*/
+/*width : 250px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*margin-top:5px;*/
+/*margin-right:10px;*/
+/*background-color:#FFFFFF;*/
+/*}*/
+/*.reportH1	{*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 15px;*/
+/*font-weight:bold;*/
+/*margin:10px;*/
+/*}*/
+/*.reportH2	{*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*font-weight:bold;*/
+/*margin:10px;*/
+/*}*/
+/*.reportP	{*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*font-weight:normal;*/
+/*margin:10px;*/
+/*}*/
+/*.select60	{*/
+/*width : 60px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*}*/
+/*.select100	{*/
+/*width : 100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*}*/
+/*.select200	{*/
+/*width : 200px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*margin-bottom: 10px;*/
+/*background-color:#FFFFFF;*/
+/*}*/
+/*.select400	{*/
+/*width : 400px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*margin-bottom:10px;*/
+/*background-color:#FFFFFF;*/
+/*}*/
+/*.selectDisplayDetails	{*/
+/*width :100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*margin:0px;*/
+/*background-color:transparent;*/
+/*border-style:none;*/
+/*}*/
+/*.selectDisplayDetailsNew	{*/
+/*width :100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*margin:0px;*/
+/*background-color:#FFFFFF;*/
+/*border-style:none;*/
+/*}*/
+/*.tableInput	{*/
+/*width : 100%;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin-bottom: 1px;*/
+/*margin-top: 0px;*/
+/*margin-left: 1px;*/
+/*margin-right: 1px;*/
+/*color:#000000;*/
+/*border-style:solid;*/
+/*border-width:1px;*/
+/*border-color:#CCCCCC;*/
+/*}*/
+/*.testEmailInput	{*/
+/*width : 110px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*margin: 0px;*/
+/*border-style:none;*/
+/*border-color:#000000;*/
+/*border-width:1px;*/
+/*}*/
+/*.textarea400x100	{*/
+/*width : 400px;*/
+/*height : 100px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color: #FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*}*/
+/*.textarea400x200	{*/
+/*width : 400px;*/
+/*height : 200px;*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color: #FFFFFF;*/
+/*margin-bottom: 10px;*/
+/*}*/
+/*.titleBar {*/
+/*background-color:#0A246A;*/
+/*border-style:solid;*/
+/*border-width:2px;*/
+/*border-top-color:#CCCCCC;*/
+/*border-left-color:#CCCCCC;*/
+/*border-right-color:#CCCCCC;*/
+/*border-bottom-color:#CCCCCC;*/
+/*color:#FFFFFF;*/
+/*}*/
+/*.tree01 {*/
+/*color:#000000;*/
+/*margin-left:6px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.tree02 {*/
+/*color:#000000;*/
+/*margin-left:8px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.tree03 {*/
+/*color:#000000;*/
+/*margin-left:26px;*/
+/*margin-top:0px;*/
+/*margin-bottom:0px;*/
+/*}*/
+/*.querySelect	{*/
+/*font-family : Arial, Helvetica, sans-serif;*/
+/*font-size : 11px;*/
+/*background-color:#FFFFFF;*/
+/*}*/

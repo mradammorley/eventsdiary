@@ -1,0 +1,9 @@
+.CalendarGrid {
+  grid-area: CalendarGrid;
+  display: grid;
+  grid-template-columns: repeat(7, 14.25vw);
+  height: 100%;
+  width: 100%;
+  grid-gap: $line-width;
+  background-color: $grid-line-colour;
+}

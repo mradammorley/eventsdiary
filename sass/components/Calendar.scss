@@ -1,0 +1,12 @@
+.Calendar {
+  grid-area: Calendar;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 37px auto;
+  grid-template-areas:
+          "CalendarDaysHeader"
+          "CalendarGrid";
+  height: 100%;
+  grid-gap: $line-width;
+  background-color: $grid-section-separator;
+}

@@ -1,0 +1,14 @@
+.CalendarDaysHeader {
+  grid-area: CalendarDaysHeader;
+  display: grid;
+  grid-template-columns: repeat(7, 14.29%);
+  height: 100%;
+  width: 100%;
+  background-color: $calendar-background-colour;
+
+  > div {
+    align-self: center;
+    justify-self: end;
+    margin-right: calc(#{$cell-padding} - #{$line-width});
+  }
+}

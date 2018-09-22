@@ -1,0 +1,17 @@
+.Toolbar {
+  grid-area: Toolbar;
+  display: grid;
+  grid-template-columns: [DisplayDateRange-start]
+  30% [DisplayDateRange-end DateRangeSelector-start]
+  30% [DateRangeSelector-end DateRangeBrowser-start]
+  25% [DateRangeBrowser-end AccountTools-start]
+  1fr [AccountTools-end];
+  grid-template-rows: 100%;
+  background: $calendar-background-colour;
+
+  > div {
+    align-self: center;
+    justify-self: start;
+    margin-left: 5px;
+  }
+}

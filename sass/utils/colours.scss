@@ -1,0 +1,6 @@
+$primary-text-colour: black;
+$line-colour: black;
+$grid-line-colour: lighten($line-colour, 85%);
+$grid-section-separator: lighten($line-colour, 50%);
+$calendar-background-colour: white;
+$greyed-out-primary-text-colour: lighten($primary-text-colour, 75%);

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+
+$base-font-size: calc(6px + 0.6vw);
+$large-header-font-size: calc(12px + 1.2vw);
+$medium-header-font-size: calc(9px + 0.9vw);
+$small-header-font-size: $base-font-size;
+
+
+
+body {
+  font-size: $base-font-size;
+  color: $primary-text-colour;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.page-header {
+  font-size: $large-header-font-size;
+
+  span.light-text {
+    white-space: pre;
+    font-weight: 300;
+  }
+}
