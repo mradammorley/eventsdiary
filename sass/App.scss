@@ -1,0 +1,12 @@
+.App {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 37px 192px 30px 36px auto;
+  grid-template-areas:
+          "Toolbar"
+          "Calendar"
+          "Legend"
+          "BookingsHeader"
+          "Bookings";
+  height: 100vh;
+}

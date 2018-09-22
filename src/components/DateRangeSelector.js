@@ -6,6 +6,7 @@ import DisplayDateRange from './DisplayDateRange';
 const _utils = new Utils;
 
 const DateRangeSelector = () => {
+
 	// renderHeader() {
 	// 	const dateFormat = "MMMM YYYY";
 	//
