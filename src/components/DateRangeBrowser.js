@@ -1,14 +1,36 @@
 import React from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {calendarActions} from "../actions/calendar.action";
 
-const DateRangeBrowser = () => {
+class DateRangeBrowser extends React.Component {
+    constructor(props) {
+        super(props);
 
-    return (
-        <div className="DateRangeBrowser">
-            <div className="button">&lt;</div>
-            <div className="button">Today</div>
-            <div className="button">&gt;</div>
-        </div>
-    );
+        this.gotoNextMonth = this.gotoNextMonth.bind(this);
+    }
+
+    gotoNextMonth() {
+        this.props.dispatch(calendarActions.gotoNextMonth());
+    }
+
+    render() {
+        return (
+            <div className="DateRangeBrowser">
+                <div className="button">&lt;</div>
+                <div className="button">Today</div>
+                <div className="button" onClick={this.gotoNextMonth}>&gt;</div>
+            </div>
+        );
+    }
 };
 
-export default DateRangeBrowser;
+DateRangeBrowser.propTypes = {
+    dispatch: PropTypes.func
+};
+
+const mapStateToProps = (state) => {
+    return {dispatch: state.dispatch};
+};
+
+export default connect(mapStateToProps)(DateRangeBrowser);

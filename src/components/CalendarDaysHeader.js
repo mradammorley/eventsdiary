@@ -1,11 +1,11 @@
 import React from "react";
 import dateFns from "date-fns";
 import PropTypes from "prop-types";
-import {calendarConstants} from "../constants/calendar.constants";
+import {calendarConfig} from "../config/calendar.config";
 
 class CalendarDaysHeader extends React.Component  {
 	render() {
-		const dateFormat = calendarConstants.daysHeaderDateFormat;
+		const dateFormat = calendarConfig.HEADER_DAY_FORMAT;
 		const days = [];
 
 		let startDate = dateFns.startOfWeek(this.props.currentMonth, { weekStartsOn: 1 });
