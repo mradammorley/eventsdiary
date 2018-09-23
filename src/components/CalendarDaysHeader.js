@@ -24,7 +24,7 @@ class CalendarDaysHeader extends React.Component  {
 }
 
 CalendarDaysHeader.propTypes = {
-	currentMonth: PropTypes.instanceOf(Date)
+	currentMonth: PropTypes.number
 };
 
 export default CalendarDaysHeader;

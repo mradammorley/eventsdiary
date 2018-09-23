@@ -1,0 +1,6 @@
+.button {
+  border: 1px $grid-section-separator solid;
+  border-radius: 2px;
+  @extend .button-shadow;
+  padding: 0.5vw 1vw;
+}

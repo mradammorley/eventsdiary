@@ -21,6 +21,14 @@ body {
 .base-shadow {
   box-shadow: 0 4px 4px 0 rgba(58, 70, 92, 0.1), 0 2px 2px 0 rgba(58, 70, 92, 0.1); }
 
+.button-shadow, .button {
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1); }
+
+.button {
+  border: 1px gray solid;
+  border-radius: 2px;
+  padding: 0.5vw 1vw; }
+
 .App {
   display: grid;
   grid-template-columns: 100%;
@@ -37,7 +45,7 @@ body {
   .Toolbar > div {
     align-self: center;
     justify-self: start;
-    margin-left: 5px; }
+    margin-left: 1vw; }
 
 .Calendar {
   grid-area: Calendar;
@@ -102,6 +110,12 @@ body {
   box-sizing: border-box; }
   .DisplayDateRange.inactive {
     color: #bfbfbf; }
+
+.DateRangeBrowser {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 20vw; }
 
 .box {
   height: 13px;

@@ -63,7 +63,7 @@ class CalendarGrid extends React.Component  {
 }
 
 CalendarGrid.propTypes = {
-	currentMonth: PropTypes.instanceOf(Date),
+	currentMonth: PropTypes.number,
 	selectedDate: PropTypes.instanceOf(Date),
 	events: PropTypes.array
 };
