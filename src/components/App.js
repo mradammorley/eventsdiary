@@ -6,23 +6,12 @@ import BookingsHeader from './BookingsHeader';
 import Bookings from './Bookings';
 import PropTypes from "prop-types";
 import _ from "lodash";
-
-const today = new Date();
+import {connect} from "react-redux";
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-
-        this.state = {
-            selectedDate: today,
-            currentMonth: today.getMonth(),
-            currentYear: today.getFullYear(),
-            currentMonthEvents: []
-        };
-	}
 
 	componentDidMount() {
-		let currentMonthEvents = this.getEventsForCurrentMonth(this.props.eventData, this.state.currentYear, this.state.currentMonth);
+		let currentMonthEvents = this.getEventsForCurrentMonth(this.props.eventData, this.props.calendar.currentYear, this.props.calendar.currentMonth);
         this.setState({ currentMonthEvents: currentMonthEvents });
 	}
 
@@ -35,10 +24,10 @@ class App extends React.Component {
 			<div className='App'>
 				<Toolbar/>
 				<Calendar
-                    selectedDate = { this.state.selectedDate }
-                    currentMonth = { this.state.currentMonth }
-                    currentYear = { this.state.currentYear }
-					currentMonthEvents = { this.state.currentMonthEvents }/>
+                    selectedDate = { this.props.calendar.selectedDate }
+                    currentMonth = { this.props.calendar.currentMonth }
+                    currentYear = { this.props.calendar.currentYear }
+					currentMonthEvents = { this.props.calendar.currentMonthEvents }/>
 				<Legend />
 				<BookingsHeader/>
 				<Bookings />
@@ -48,7 +37,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-	data: PropTypes.object
+    eventData: PropTypes.object,
+	calendar: PropTypes.object
 };
 
-export default App;
+const mapStateToProps = (state) => {
+    return {calendar: state.calendar};
+};
+
+export default connect(mapStateToProps)(App);
