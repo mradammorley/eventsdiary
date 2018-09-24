@@ -12,7 +12,6 @@ const initialState = {
 export function calendar(state = initialState, action) {
     switch (action.type) {
         case calendarConstants.CHANGE_DATE_RANGE:
-            console.log(action.payload);
             return {
                 ...state,
                 ...action.payload
