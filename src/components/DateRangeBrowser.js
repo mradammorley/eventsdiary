@@ -8,17 +8,21 @@ class DateRangeBrowser extends React.Component {
         super(props);
 
         this.gotoNextMonth = this.gotoNextMonth.bind(this);
+        this.gotoPreviousMonth = this.gotoPreviousMonth.bind(this);
     }
 
     gotoNextMonth() {
-        let currentMonth = this.props.calendar.currentMonth;
-        this.props.dispatch(calendarActions.gotoNextMonth(currentMonth));
+        this.props.dispatch(calendarActions.gotoNextMonth(this.props.calendar.currentMonth, this.props.calendar.currentYear));
+    }
+
+    gotoPreviousMonth() {
+        this.props.dispatch(calendarActions.gotoPreviousMonth(this.props.calendar.currentMonth, this.props.calendar.currentYear));
     }
 
     render() {
         return (
             <div className="DateRangeBrowser">
-                <div className="button">&lt;</div>
+                <div className="button" onClick={this.gotoPreviousMonth}>&lt;</div>
                 <div className="button">Today</div>
                 <div className="button" onClick={this.gotoNextMonth}>&gt;</div>
             </div>

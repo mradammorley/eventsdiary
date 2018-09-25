@@ -6,7 +6,7 @@ class CalendarCell extends React.Component  {
 		return (
 			<div className = {`CalendarCell ${ this.props.isInCurrentMonth ? "active" : "inactive" } ${
 				this.props.isSelectedDate ? "selected" : "" } `}>
-				{ this.props.dayOfMonth }
+				{ this.props.dayOfMonth + 1 }
 				{ this.props.eventsOnDay }
 			</div>
 		);
