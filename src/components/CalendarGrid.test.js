@@ -1,40 +1,66 @@
-// import "raf/polyfill";
-//
-// import { configure } from "enzyme";
-// import Adapter from "enzyme-adapter-react-16";
-//
-// configure({ adapter: new Adapter() });
-
-import "jsdom-global/register";
 import React from "react";
-import {mount} from "enzyme";
+import {shallow, mount} from "enzyme";
 import CalendarGrid from "./CalendarGrid";
+import CalendarCell from "./CalendarCell";
 
 
 describe("CalendarGrid", () => {
-    let props;
-    let mountedCalendarGrid;
-    const calendarGrid = () => {
-        if (!mountedCalendarGrid) {
-            mountedCalendarGrid = mount(
-                <CalendarGrid {...props} />
-            );
-        }
-        return mountedCalendarGrid;
-    }
 
-    beforeEach(() => {
-        props = {
-            currentMonth: undefined,
-            currentYear: undefined,
-            selectedDate: undefined,
-            events: undefined
-        };
-        mountedCalendarGrid = undefined;
+    const calendar = mount(
+        <CalendarGrid
+            currentMonth={8}
+            currentYear={2018}
+            selectedDate={new Date(2018, 8, 12)}
+            events={[
+                {
+                    "eventID": 1,
+                    "month": 8,
+                    "day": 3,
+                    "year": 2018,
+                    "eventTitle": "Event number one",
+                    "eventText": "Event number one text",
+                    "dateEntered": "30/03/2017 by AM",
+                    "bookerID": 9,
+                    "booked": 0
+                },
+                {
+                    "eventID": 2,
+                    "month": 8,
+                    "day": 15,
+                    "year": 2018,
+                    "eventTitle": "Event number two",
+                    "eventText": "Event number two text",
+                    "dateEntered": "30/03/2017 by AM",
+                    "bookerID": 9,
+                    "booked": 0
+                },
+                {
+                    "eventID": 3,
+                    "month": 8,
+                    "day": 2,
+                    "year": 2018,
+                    "eventTitle": "Event number three",
+                    "eventText": "Event number three text",
+                    "dateEntered": "31/03/2017 by AM",
+                    "bookerID": 9,
+                    "booked": 1
+                }
+            ]}/>);
+
+    it("renders 1 calendar grid", () => {
+        expect(calendar).toHaveLength(1);
     });
 
-    it("always renders a div", () => {
-        const divs = calendarGrid().find("div");
-        expect(divs.length).toBeGreaterThan(0);
+    it("renders props correctly", () => {
+        expect(calendar.instance().props.currentMonth).toBe(8);
     });
+
+    it("renders 42 days", () => {
+        expect(calendar.find(".CalendarGrid").children()).toHaveLength(42);
+    });
+
+    it("renders 31 active days", () => {
+        expect(calendar.find(".CalendarGrid").children().find(".CalendarCell.active")).toHaveLength(31);
+    });
+
 });

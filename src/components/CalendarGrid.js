@@ -2,6 +2,7 @@ import React from "react";
 import dateFns from "date-fns";
 import PropTypes from "prop-types";
 import CalendarCell from "./CalendarCell";
+import _ from "lodash";
 
 class CalendarGrid extends React.Component  {
 	constructor (props) {
@@ -11,13 +12,8 @@ class CalendarGrid extends React.Component  {
 		this.getEventsOnDay = this.getEventsOnDay.bind(this);
 	}
 
-	componentDidUpdate() {
-		console.log ("component did update");
-	}
-
-	getMonthOfDays () {
-		const monthStart = dateFns.startOfMonth(new Date(this.props.currentYear, this.props.currentMonth));
-		console.log (this.props.currentMonth);
+	getMonthOfDays (date) {
+		const monthStart = dateFns.startOfMonth(date);
 		const monthEnd = dateFns.endOfMonth(monthStart);
 		const startDate = dateFns.startOfWeek(monthStart);
 		const endDate = dateFns.endOfWeek(monthEnd);
@@ -29,8 +25,6 @@ class CalendarGrid extends React.Component  {
 			day = dateFns.addDays(day, 1);
 		}
 
-
-        console.log (days);
 		return days;
 	}
 
@@ -45,7 +39,7 @@ class CalendarGrid extends React.Component  {
 
 	render() {
 
-		let monthOfDays = this.getMonthOfDays();
+		let monthOfDays = this.getMonthOfDays(new Date(this.props.currentYear, this.props.currentMonth));
 		monthOfDays = monthOfDays.map((day, index) =>  {
 			return (
 				<CalendarCell
