@@ -1,8 +1,10 @@
 import calendarConstants from "../constants/calendar.constants";
 
-function gotoNextMonth() {
-    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: { currentMonth: 3 }};
-}
+const gotoNextMonth = (currentMonth) =>{
+    let nextMonth;
+    (currentMonth >= 11) ? nextMonth = 0 : nextMonth = currentMonth + 1;
+    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: { currentMonth: nextMonth }};
+};
 
 export const calendarActions = {
     gotoNextMonth

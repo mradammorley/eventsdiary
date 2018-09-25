@@ -3,16 +3,29 @@ import DisplayDateRange from './DisplayDateRange';
 import DateRangeSelector from './DateRangeSelector';
 import DateRangeBrowser from './DateRangeBrowser';
 import AccountTools from './AccountTools';
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
-const Toolbar = () => {
-	return (
-		<div className='Toolbar'>
-			<DisplayDateRange />
-			<DateRangeSelector />
-			<DateRangeBrowser />
-			<AccountTools />
-		</div>
-	);
+
+class Toolbar extends React.Component  {
+    render() {
+        return (
+            <div className='Toolbar'>
+                <DisplayDateRange referenceDate={ new Date(this.props.calendar.currentYear, this.props.calendar.currentMonth) }/>
+                <DateRangeSelector/>
+                <DateRangeBrowser/>
+                <AccountTools/>
+            </div>
+        );
+    }
 };
 
-export default Toolbar;
+Toolbar.propTypes = {
+    calendar: PropTypes.object
+};
+
+const mapStateToProps = (state) => {
+    return {calendar: state.calendar};
+};
+
+export default connect(mapStateToProps)(Toolbar);

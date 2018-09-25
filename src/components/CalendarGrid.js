@@ -3,6 +3,7 @@ import dateFns from "date-fns";
 import PropTypes from "prop-types";
 import CalendarCell from "./CalendarCell";
 import _ from "lodash";
+import {connect} from "react-redux";
 
 class CalendarGrid extends React.Component  {
 	constructor (props) {
@@ -38,14 +39,14 @@ class CalendarGrid extends React.Component  {
 	}
 
 	render() {
-
-		let monthOfDays = this.getMonthOfDays(new Date(this.props.currentYear, this.props.currentMonth));
+		let referenceDate = new Date(this.props.calendar.currentYear, this.props.calendar.currentMonth);
+		let monthOfDays = this.getMonthOfDays(referenceDate);
 		monthOfDays = monthOfDays.map((day, index) =>  {
 			return (
 				<CalendarCell
 					dayOfMonth={ dateFns.getDate(day) }
-					isSelectedDate={ dateFns.isSameDay(this.props.selectedDate, day)   }
-					isInCurrentMonth = { dateFns.isSameMonth(this.props.currentMonth, day) }
+					isSelectedDate={ dateFns.isSameDay(this.props.calendar.selectedDate, day) }
+					isInCurrentMonth = { dateFns.isSameMonth(referenceDate, day) }
 					eventsOnDay = { this.getEventsOnDay(day) }
 					key={ index }
 				/>
@@ -63,11 +64,14 @@ class CalendarGrid extends React.Component  {
 }
 
 CalendarGrid.propTypes = {
-	currentMonth: PropTypes.number,
-    currentYear: PropTypes.number,
-	selectedDate: PropTypes.instanceOf(Date),
-	events: PropTypes.array
+    calendar: PropTypes.object,
+    events: PropTypes.array
 };
 
-export default CalendarGrid;
+const mapStateToProps = (store) => {
+    return {calendar: store.calendar};
+};
+
+export default connect(mapStateToProps)(CalendarGrid);
+
 

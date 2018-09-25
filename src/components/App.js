@@ -38,11 +38,11 @@ class App extends React.Component {
 
 App.propTypes = {
     eventData: PropTypes.object,
-	calendar: PropTypes.object
+	calendar: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-    return {calendar: state.calendar};
+const mapStateToProps = (store) => {
+    return {calendar: store.calendar};
 };
 
 export default connect(mapStateToProps)(App);

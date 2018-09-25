@@ -8,9 +8,7 @@ describe("CalendarGrid", () => {
 
     const calendar = mount(
         <CalendarGrid
-            currentMonth={8}
-            currentYear={2018}
-            selectedDate={new Date(2018, 8, 12)}
+            store={store}
             events={[
                 {
                     "eventID": 1,
@@ -45,7 +43,7 @@ describe("CalendarGrid", () => {
                     "bookerID": 9,
                     "booked": 1
                 }
-            ]}/>);
+            ]}/>).dive();
 
     it("renders 1 calendar grid", () => {
         expect(calendar).toHaveLength(1);

@@ -1,16 +1,21 @@
-import React from 'react';
-import Utils from '../Utils';
+import React from "react";
+import {getMonthName} from "../Utils";
+import PropTypes from "prop-types";
 
-const _utils = new Utils;
 
-let dbCurrentdate = new Date();
+class DisplayDateRange extends React.Component  {
+    render() {
+        return (
+            <div className='DisplayDateRange'>
+                {getMonthName(this.props.referenceDate)}<span
+                className="light-text">{" " + this.props.referenceDate.getFullYear()}</span>
+            </div>
+        );
+    }
+};
 
-const DisplayDateRange = () => {
-    return (
-        <div className='DisplayDateRange'>
-            {_utils.getMonthName(dbCurrentdate)}<span className="light-text">{" " + _utils.getYearName(dbCurrentdate)}</span>
-        </div>
-    );
+DisplayDateRange.propTypes = {
+    referenceDate: PropTypes.instanceOf(Date)
 };
 
 export default DisplayDateRange;

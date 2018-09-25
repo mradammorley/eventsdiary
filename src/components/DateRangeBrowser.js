@@ -11,7 +11,8 @@ class DateRangeBrowser extends React.Component {
     }
 
     gotoNextMonth() {
-        this.props.dispatch(calendarActions.gotoNextMonth());
+        let currentMonth = this.props.calendar.currentMonth;
+        this.props.dispatch(calendarActions.gotoNextMonth(currentMonth));
     }
 
     render() {
@@ -26,11 +27,15 @@ class DateRangeBrowser extends React.Component {
 };
 
 DateRangeBrowser.propTypes = {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    calendar: PropTypes.object
 };
 
-const mapStateToProps = (state) => {
-    return {dispatch: state.dispatch};
+const mapStateToProps = (store) => {
+    return {
+        dispatch: store.dispatch,
+        calendar: store.calendar
+    };
 };
 
 export default connect(mapStateToProps)(DateRangeBrowser);

@@ -8,7 +8,7 @@ class Calendar extends React.Component {
 		return (
 			<div className="Calendar">
 				<CalendarDaysHeader currentMonth={ this.props.currentMonth }/>
-				<CalendarGrid currentMonth={ this.props.currentMonth } currentYear={ this.props.currentYear } selectedDate={ this.props.selectedDate } events={ this.props.currentMonthEvents }/>
+				<CalendarGrid events={ this.props.currentMonthEvents }/>
 			</div>
 		);
 	}
