@@ -1,5 +1,5 @@
 import React from "react";
-import {getMonthName} from "../Utils";
+import {getMonthName} from "../helpers/date.helper";
 import PropTypes from "prop-types";
 
 

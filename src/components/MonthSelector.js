@@ -1,14 +1,20 @@
 import React from "react";
+import {getThisMonth, getThisYear} from "../helpers/date.helper";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {calendarActions} from "../actions/calendar.action";
 
-class DateRangeBrowser extends React.Component {
+class MonthSelector extends React.Component {
     constructor(props) {
         super(props);
 
+        this.gotoThisMonth = this.gotoThisMonth.bind(this);
         this.gotoNextMonth = this.gotoNextMonth.bind(this);
         this.gotoPreviousMonth = this.gotoPreviousMonth.bind(this);
+    }
+
+    gotoThisMonth() {
+        this.props.dispatch(calendarActions.gotoMonth(getThisMonth(), getThisYear()));
     }
 
     gotoNextMonth() {
@@ -23,14 +29,14 @@ class DateRangeBrowser extends React.Component {
         return (
             <div className="DateRangeBrowser">
                 <div className="button" onClick={this.gotoPreviousMonth}>&lt;</div>
-                <div className="button">Today</div>
+                <div className="button" onClick={this.gotoThisMonth}>This Month</div>
                 <div className="button" onClick={this.gotoNextMonth}>&gt;</div>
             </div>
         );
     }
 };
 
-DateRangeBrowser.propTypes = {
+MonthSelector.propTypes = {
     dispatch: PropTypes.func,
     calendar: PropTypes.object
 };
@@ -42,4 +48,4 @@ const mapStateToProps = (store) => {
     };
 };
 
-export default connect(mapStateToProps)(DateRangeBrowser);
+export default connect(mapStateToProps)(MonthSelector);

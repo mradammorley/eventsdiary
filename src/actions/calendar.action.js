@@ -1,5 +1,13 @@
 import calendarConstants from "../constants/calendar.constants";
 
+const gotoMonth = (month, year) => {
+    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentMonth: month, currentYear: year}};
+};
+
+const gotoYear = (year) => {
+    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentYear: year}};
+};
+
 const gotoNextMonth = (currentMonth, currentYear) => {
     let nextMonth;
     let endOfYearReached = false;
@@ -31,6 +39,8 @@ const gotoPreviousYear = (currentYear) => {
 };
 
 export const calendarActions = {
+    gotoMonth,
+    gotoYear,
     gotoNextMonth,
     gotoPreviousMonth,
     gotoNextYear,

@@ -6,3 +6,13 @@ export const getMonthName = (date) =>{
 
 	return monthNames[date.getMonth()];
 };
+
+export const getThisMonth = () =>{
+    let today = new Date();
+	return today.getMonth();
+};
+
+export const getThisYear = () =>{
+    let today = new Date();
+    return today.getFullYear();
+};
