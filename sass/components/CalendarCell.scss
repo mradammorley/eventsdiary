@@ -11,4 +11,12 @@
   &.inactive {
     color: $greyed-out-primary-text-colour;
   }
+
+  &.selected span {
+    background: $selected-colour;
+    color: $inverted-text-colour;
+    padding: $cell-padding;
+    border-radius: 50%;
+  }
+
 }
