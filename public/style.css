@@ -82,18 +82,26 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 1vw;
+  padding: 0.5vw;
   width: 100%;
   height: 100%;
   background: white;
   box-sizing: border-box; }
-  .CalendarCell.inactive {
-    color: #bfbfbf; }
-  .CalendarCell.selected span {
-    background: red;
-    color: white;
-    padding: 1vw;
+  .CalendarCell .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3vw;
+    width: 3vw;
     border-radius: 50%; }
+  .CalendarCell.inactive .day {
+    color: #bfbfbf; }
+  .CalendarCell.today .day {
+    background: orange;
+    color: white; }
+  .CalendarCell.selected .day {
+    background: red;
+    color: white; }
 
 .Legend {
   grid-area: Legend; }

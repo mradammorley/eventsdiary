@@ -4,11 +4,14 @@ import PropTypes from "prop-types";
 import CalendarCell from "./CalendarCell";
 import _ from "lodash";
 import {connect} from "react-redux";
+import {calendarActions} from "../actions/calendar.action";
+import {getThisMonth, getThisYear} from "../helpers/date.helper";
 
 class CalendarGrid extends React.Component  {
 	constructor (props) {
 		super(props);
 
+        this.gotoDay = this.gotoDay.bind(this);
 		this.getMonthOfDays = this.getMonthOfDays.bind(this);
 		this.getEventsOnDay = this.getEventsOnDay.bind(this);
 	}
@@ -16,8 +19,8 @@ class CalendarGrid extends React.Component  {
 	getMonthOfDays (date) {
 		const monthStart = dateFns.startOfMonth(date);
 		const monthEnd = dateFns.endOfMonth(monthStart);
-		const startDate = dateFns.startOfWeek(monthStart);
-		const endDate = dateFns.endOfWeek(monthEnd);
+		const startDate = dateFns.startOfWeek(monthStart, { weekStartsOn: 1 });
+		const endDate = dateFns.endOfWeek(monthEnd, { weekStartsOn: 1 });
 		let days = [];
 		let day = startDate;
 
@@ -38,16 +41,26 @@ class CalendarGrid extends React.Component  {
 		return eventsOnDayBooker;
 	}
 
+	gotoDay (event) {
+		event.preventDefault();
+        event.stopPropagation();
+        this.props.dispatch(calendarActions.gotoDay(new Date(event.target.dataset.year, event.target.dataset.month,  event.target.dataset.day)));
+	}
+
 	render() {
 		let referenceDate = new Date(this.props.calendar.currentYear, this.props.calendar.currentMonth);
 		let monthOfDays = this.getMonthOfDays(referenceDate);
 		monthOfDays = monthOfDays.map((day, index) =>  {
 			return (
 				<CalendarCell
-					dayOfMonth={ dateFns.getDate(day) }
+					day={ dateFns.getDate(day) }
+					month={ dateFns.getMonth(day) }
+					year={ dateFns.getYear(day) }
 					isSelectedDate={ dateFns.isSameDay(this.props.calendar.selectedDate, day) }
+                    isToday={ dateFns.isSameDay(new Date(), day) }
 					isInCurrentMonth = { dateFns.isSameMonth(referenceDate, day) }
 					eventsOnDay = { this.getEventsOnDay(day) }
+					clickHandler={ this.gotoDay }
 					key={ index }
 				/>
 			);

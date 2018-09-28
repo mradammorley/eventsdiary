@@ -1,9 +1,11 @@
 $primary-text-colour: black;
 $inverted-text-colour: white;
 $line-colour: black;
-$highlight-colour: red;
+$highlight-colour: orange;
+$super-highlight-colour: red;
 $grid-line-colour: lighten($line-colour, 85%);
 $grid-section-separator: lighten($line-colour, 50%);
 $calendar-background-colour: white;
 $greyed-out-primary-text-colour: lighten($primary-text-colour, 75%);
-$selected-colour: $highlight-colour;
+$selected-colour: $super-highlight-colour;
+$today-colour: $highlight-colour;

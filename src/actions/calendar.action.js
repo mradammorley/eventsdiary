@@ -1,5 +1,9 @@
 import calendarConstants from "../constants/calendar.constants";
 
+const gotoDay = (date) => {
+    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {selectedDate: date}};
+};
+
 const gotoMonth = (month, year) => {
     return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentMonth: month, currentYear: year}};
 };
@@ -39,6 +43,7 @@ const gotoPreviousYear = (currentYear) => {
 };
 
 export const calendarActions = {
+    gotoDay,
     gotoMonth,
     gotoYear,
     gotoNextMonth,

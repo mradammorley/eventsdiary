@@ -2,21 +2,33 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: $cell-padding;
+  padding: $cell-padding/2;
   width: 100%;
   height: 100%;
   background: $calendar-background-colour;
   box-sizing: border-box;
 
-  &.inactive {
+  .day {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 3vw;
+    width: 3vw;
+    border-radius: 50%;
+  }
+
+  &.inactive .day {
     color: $greyed-out-primary-text-colour;
   }
 
-  &.selected span {
+  &.today .day {
+    background: $today-colour;
+    color: $inverted-text-colour;
+  }
+
+  &.selected .day {
     background: $selected-colour;
     color: $inverted-text-colour;
-    padding: $cell-padding;
-    border-radius: 50%;
   }
 
 }
