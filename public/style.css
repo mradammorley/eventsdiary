@@ -39,7 +39,7 @@ body {
 .Toolbar {
   grid-area: Toolbar;
   display: grid;
-  grid-template-columns: [DisplayDateRange-start] 30% [DisplayDateRange-end DateRangeSelector-start] 30% [DateRangeSelector-end DateRangeBrowser-start] 25% [DateRangeBrowser-end AccountTools-start] 1fr [AccountTools-end];
+  grid-template-columns: [DisplayDateRange-start] 30% [DisplayDateRange-end YearSelector-start] 25% [YearSelector-end YearSelector-start] 25% [YearSelector-end AccountTools-start] 1fr [AccountTools-end];
   grid-template-rows: 100%;
   background: white; }
   .Toolbar > div {
@@ -124,7 +124,13 @@ body {
   .DisplayDateRange.inactive {
     color: #bfbfbf; }
 
-.DateRangeBrowser {
+.MonthSelector {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 20vw; }
+
+.YearSelector {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;

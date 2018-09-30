@@ -27,7 +27,7 @@ class MonthSelector extends React.Component {
 
     render() {
         return (
-            <div className="DateRangeBrowser">
+            <div className="MonthSelector">
                 <div className="button" onClick={this.gotoPreviousMonth}>&lt;</div>
                 <div className="button" onClick={this.gotoThisMonth}>This Month</div>
                 <div className="button" onClick={this.gotoNextMonth}>&gt;</div>

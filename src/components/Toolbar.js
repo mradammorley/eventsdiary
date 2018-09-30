@@ -1,7 +1,7 @@
 import React from 'react';
 import DisplayDateRange from './DisplayDateRange';
-import DateRangeSelector from './DateRangeSelector';
-import DateRangeBrowser from './MonthSelector';
+import MonthSelector from './MonthSelector';
+import YearSelector from './YearSelector';
 import AccountTools from './AccountTools';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
@@ -12,8 +12,8 @@ class Toolbar extends React.Component  {
         return (
             <div className='Toolbar'>
                 <DisplayDateRange referenceDate={ new Date(this.props.calendar.currentYear, this.props.calendar.currentMonth) }/>
-                <DateRangeSelector/>
-                <DateRangeBrowser/>
+                <MonthSelector/>
+                <YearSelector/>
                 <AccountTools/>
             </div>
         );
