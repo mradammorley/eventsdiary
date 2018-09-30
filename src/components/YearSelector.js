@@ -18,11 +18,11 @@ class YearSelector extends React.Component {
     }
 
     gotoNextYear() {
-        this.props.dispatch(calendarActions.gotoNextYear(this.props.calendar.currentYear, this.props.calendar.currentYear));
+        this.props.dispatch(calendarActions.gotoNextYear(this.props.calendar.currentYear));
     }
 
     gotoPreviousYear() {
-        this.props.dispatch(calendarActions.gotoPreviousYear(this.props.calendar.currentYear, this.props.calendar.currentYear));
+        this.props.dispatch(calendarActions.gotoPreviousYear(this.props.calendar.currentYear));
     }
 
     render() {
