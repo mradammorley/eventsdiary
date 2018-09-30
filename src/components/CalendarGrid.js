@@ -35,7 +35,7 @@ class CalendarGrid extends React.Component  {
 	getEventsOnDay (day) {
 		let eventsOnDayBooker = [];
 		let eventsOnDay = _.filter(this.props.events, { "day": day.getDate() });
-		_.forEach(eventsOnDay, (event) => {
+        eventsOnDay.forEach((event) => {
 			eventsOnDayBooker.push(event["bookerID"].toString());
 		});
 		return eventsOnDayBooker;

@@ -5,7 +5,10 @@ const gotoDay = (date) => {
 };
 
 const gotoMonth = (month, year) => {
-    return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentMonth: month, currentYear: year}};
+    return dispatch => {
+        dispatch({ type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentMonth: month, currentYear: year}})
+        console.log("then");
+    };
 };
 
 const gotoYear = (year) => {
