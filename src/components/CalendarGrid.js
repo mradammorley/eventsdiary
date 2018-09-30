@@ -41,10 +41,8 @@ class CalendarGrid extends React.Component  {
 		return eventsOnDayBooker;
 	}
 
-	gotoDay (event) {
-		event.preventDefault();
-        event.stopPropagation();
-        this.props.dispatch(calendarActions.gotoDay(new Date(event.target.dataset.year, event.target.dataset.month,  event.target.dataset.day)));
+	gotoDay (day, month, year) {
+        this.props.dispatch(calendarActions.gotoDay(new Date(year, month, day)));
 	}
 
 	render() {
@@ -60,7 +58,7 @@ class CalendarGrid extends React.Component  {
                     isToday={ dateFns.isSameDay(new Date(), day) }
 					isInCurrentMonth = { dateFns.isSameMonth(referenceDate, day) }
 					eventsOnDay = { this.getEventsOnDay(day) }
-					clickHandler={ this.gotoDay }
+					onCellClick={ this.gotoDay }
 					key={ index }
 				/>
 			);
@@ -78,7 +76,8 @@ class CalendarGrid extends React.Component  {
 
 CalendarGrid.propTypes = {
     calendar: PropTypes.object,
-    events: PropTypes.array
+    events: PropTypes.array,
+	dispatch: PropTypes.func
 };
 
 const mapStateToProps = (store) => {

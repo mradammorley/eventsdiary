@@ -2,16 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class CalendarCell extends React.Component  {
+    constructor (props) {
+        super(props);
+
+        this.clickHandler = this.clickHandler.bind(this);
+    }
+
+    clickHandler() {
+        this.props.onCellClick(this.props.day, this.props.month, this.props.year);
+    }
 
 	render() {
 		return (
 			<div
 				className = {`CalendarCell ${ this.props.isInCurrentMonth ? "active" : "inactive" } ${
 				this.props.isSelectedDate ? "selected" : "" } ${this.props.isToday ? "today" : "" } `}
-				onClick={this.props.clickHandler}
-				data-day={this.props.day}
-                data-month={this.props.month}
-                data-year={this.props.year}
+				onClick={this.clickHandler}
 			>
                 <div className="day">{ this.props.day }</div>
 				{ this.props.eventsOnDay }
@@ -30,10 +36,7 @@ CalendarCell.propTypes = {
 	day: PropTypes.number,
     month: PropTypes.number,
     year: PropTypes.number,
-	clickHandler: PropTypes.func
-
-
-
+	onCellClick: PropTypes.func
 };
 
 export default CalendarCell;
