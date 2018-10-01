@@ -28,8 +28,7 @@ class App extends React.Component {
                 <Calendar
                     selectedDate={this.props.calendar.selectedDate}
                     currentMonth={this.props.calendar.currentMonth}
-                    currentYear={this.props.calendar.currentYear}
-                    currentMonthEvents={this.props.calendar.currentMonthEvents}/>
+                    currentYear={this.props.calendar.currentYear}/>
                 <Legend/>
                 <BookingsHeader/>
                 <Bookings/>
