@@ -6,7 +6,7 @@ const refreshEvents = () => {
         eventsService.refreshEvents()
             .then(
                 response => {
-                    dispatch(success(response.data));
+                    dispatch(success(response.data.data));
                 },
                 error => {
                     dispatch(failure(error.status));
@@ -15,8 +15,7 @@ const refreshEvents = () => {
     }
 
     function success(data) {
-        console.log(eventsConstants.REFRESH_EVENTS_SUCCESS);
-        return {type: eventsConstants.REFRESH_EVENTS_SUCCESS, data};
+        return {type: eventsConstants.REFRESH_EVENTS_SUCCESS, payload: data};
     }
 
     function failure(error) {
