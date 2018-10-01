@@ -1,5 +1,4 @@
 import calendarConstants from "../constants/calendar.constants";
-import {eventsService} from "../services/events.service";
 
 const gotoDay = (date) => {
     return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {selectedDate: date}};
@@ -8,7 +7,6 @@ const gotoDay = (date) => {
 const gotoMonth = (month, year) => {
     return dispatch => {
         dispatch({ type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentMonth: month, currentYear: year}});
-        dispatch(calendarActions.refreshMonthOfEvents(month, year));
     };
 };
 
@@ -46,11 +44,6 @@ const gotoPreviousYear = (currentYear) => {
     return { type: calendarConstants.CHANGE_DATE_RANGE, payload: {currentYear: --currentYear}};
 };
 
-const refreshMonthOfEvents = (month, year) => {
-    return dispatch => {
-        eventsService.refreshMonthOfEvents()
-    };
-};
 
 export const calendarActions = {
     gotoDay,
@@ -59,6 +52,5 @@ export const calendarActions = {
     gotoNextMonth,
     gotoPreviousMonth,
     gotoNextYear,
-    gotoPreviousYear,
-    refreshMonthOfEvents
+    gotoPreviousYear
 };

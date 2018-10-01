@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mradammorley/eventsdiary#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "date-fns": "^1.29.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
