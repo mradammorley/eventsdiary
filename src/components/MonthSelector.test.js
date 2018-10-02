@@ -1,35 +1,32 @@
 import React from "react";
-import { Provider, connect } from "react-redux";
 import { shallow, mount } from "enzyme";
 import configureStore from "redux-mock-store";
 import MonthSelector from "./MonthSelector";
-import { mapStateToProps } from './MonthSelector';
 
 describe("MonthSelector component", () => {
     const initialState = {
-        calendar: {}
+        calendar: {
+            currentMonth: 9
+        }
     };
     const mockStore = configureStore();
-    let store, mountedComponent;
+    let store, component;
 
     beforeEach(() => {
         store = mockStore(initialState);
-        mountedComponent = mount(
-            <Provider store={store}><MonthSelector /></Provider>,
+        component = shallow(
+            <MonthSelector store={store}/>,
         );
     });
 
     it("Should render successfully", () => {
-        expect(mountedComponent.exists()).toEqual(true);
+        expect(component.exists()).toEqual(true);
     });
 
-    it("Should have a prop that matches initialState", () => {
-        console.log(mountedComponent.find(MonthSelector).prop("store"));
-        expect(mountedComponent.find(MonthSelector).prop("testProp")).toEqual(initialState.calendar);
-    });
-
-    it("Should render a div with className MonthSelector which has 3 children", () => {
-        expect(mountedComponent.find('div.MonthSelector').children()).toHaveLength(3);
+    it("Should show calendar initial state", () => {
+        expect(component.props().calendar).toEqual({
+            currentMonth: 9
+        });
     });
 
 });
