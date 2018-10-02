@@ -3,8 +3,7 @@ import { shallow, mount } from "enzyme";
 import DisplayDateRange from "./DisplayDateRange";
 
 describe("DisplayDateRange component", () => {
-    let component;
-    let mountedComponent;
+    let component, mountedComponent;
     const referenceDate = new Date();
 
     beforeEach(() => {
@@ -25,11 +24,7 @@ describe("DisplayDateRange component", () => {
         expect(component.exists()).toEqual(true);
     });
 
-    it('Should render a div with className DisplayDateRange', () => {
-        expect(component.find('div.DisplayDateRange').length).toEqual(1);
-    });
-
-    it('Should render some text', () => {
-        expect(component.find('div.DisplayDateRange').html().length).toBeGreaterThan(1);
+    it('Should render a div with className DisplayDateRange which contains text', () => {
+        expect(component.find('div.DisplayDateRange').html().length).toBeGreaterThan(0);
     });
 });
